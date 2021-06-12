@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="RogueQuimica"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=640
+window/size/height=420
 
 [importer_defaults]
 
