@@ -15,3 +15,11 @@ func set_animation():
 	
 	if $animation.assigned_animation!=anim:
 		$animation.play(anim)
+
+func _on_animation_animation_finished(anim_name):
+	if (anim_name == "idle"):
+		$sprite.flip_h = !$sprite.flip_h
+		$raycasts/ray_wall.scale.x *= -1
+		$raycasts/ray_ground_1.position.x *= -1
+		move_direction *= -1
+		$animation.play("run")

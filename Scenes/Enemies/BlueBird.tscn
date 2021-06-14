@@ -128,7 +128,7 @@ tracks/2/keys = {
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 8.99997
-height = 16.0
+height = 12.0001
 
 [node name="BlueBird" type="KinematicBody2D"]
 collision_layer = 2
@@ -148,7 +148,7 @@ anims/idle = SubResource( 2 )
 anims/run = SubResource( 3 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 1, -13 )
+position = Vector2( 0, -13 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
