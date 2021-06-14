@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scenes/Itens/SmallDiamond.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Itens/BigDiamond.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Enemies/BlueBird.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -682,3 +683,6 @@ position = Vector2( 470, 318 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
+
+[node name="BlueBird" parent="." instance=ExtResource( 17 )]
+position = Vector2( 407, 108 )
