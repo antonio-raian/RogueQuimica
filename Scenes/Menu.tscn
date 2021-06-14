@@ -1055,9 +1055,9 @@ tile_data = PoolIntArray( 65541, 0, 0, 65542, 31, 0, 65543, 28, 0, 65544, 28, 0,
 
 [node name="title" type="Label" parent="."]
 margin_left = 224.0
-margin_top = 52.0
+margin_top = 59.0
 margin_right = 423.0
-margin_bottom = 167.0
+margin_bottom = 174.0
 custom_fonts/font = SubResource( 2 )
 text = "Rogue Química"
 align = 1

@@ -1,8 +1,10 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Prefabs/TransitionOut.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -809,7 +811,7 @@ format = 1
 tile_data = PoolIntArray( 21, 0, 0, 65546, 8, 0, 65553, 9, 0, 65557, 1, 0, 131093, 1, 0, 196629, 1, 0, 262154, 7, 0, 262165, 3, 0, 327687, 7, 0, 524287, 0, 0, 458755, 8, 0, 458761, 7, 0, 589823, 2, 0, 524294, 4, 0, 524295, 6, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 15, 285 )
+position = Vector2( -10, 317 )
 
 [node name="limit" type="StaticBody2D" parent="."]
 position = Vector2( -34, 271 )
@@ -830,3 +832,7 @@ __meta__ = {
 
 [node name="colision" type="CollisionShape2D" parent="limit2"]
 shape = SubResource( 26 )
+
+[node name="TransitionOut" parent="." instance=ExtResource( 2 )]
+
+[node name="TransitionIn" parent="." instance=ExtResource( 5 )]

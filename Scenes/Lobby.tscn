@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Itens/SmallDiamond.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Itens/BigDiamond.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -622,6 +623,7 @@ tile_data = PoolIntArray( 0, 0, 0, 19, 0, 0, 65536, 1, 0, 65555, 1, 0, 131072, 1
 
 [node name="Door" parent="." instance=ExtResource( 3 )]
 position = Vector2( 602, 292 )
+path = "res://Scenes/Rooms/1.tscn"
 
 [node name="platforms" type="Node2D" parent="."]
 
@@ -676,5 +678,7 @@ position = Vector2( 173, 167 )
 quantity = 5
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 23, 168 )
+position = Vector2( 470, 318 )
 collision_mask = 14
+
+[node name="TransitionIn" parent="." instance=ExtResource( 16 )]
