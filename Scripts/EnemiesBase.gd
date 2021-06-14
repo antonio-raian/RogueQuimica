@@ -35,7 +35,6 @@ func set_animation():
 func _on_animation_animation_finished(anim_name):
 	pass
 
-
 func _on_Hitbox_body_entered(body):
 	hited = true
 	body.move.y = -300

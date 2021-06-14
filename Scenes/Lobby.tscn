@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
+[ext_resource path="res://Scenes/Enemies/KingPig.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Itens/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=4]
@@ -631,7 +632,10 @@ position = Vector2( 491, 243 )
 position = Vector2( 549, 289 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 42, 187 )
+position = Vector2( 281, 194 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
+
+[node name="Mushroom" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, 198 )
