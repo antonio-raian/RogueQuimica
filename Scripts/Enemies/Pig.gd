@@ -31,7 +31,6 @@ func _on_animation_animation_finished(anim_name):
 		queue_free()
 		$Hitbox/collision.set_deferred("disabled", true)
 		$Hitbox2/collision.set_deferred("disabled", true)
-		$Hitbox3/collision.set_deferred("disabled", true)
 
 func _on_Hitbox_body_entered(body):
 	hited = true
