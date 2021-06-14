@@ -119,6 +119,7 @@ action={
 2d_physics/layer_5="Traps"
 2d_physics/layer_6="Hurtbox"
 2d_physics/layer_7="Hitbox"
+2d_physics/layer_8="Pushables"
 
 [physics]
 

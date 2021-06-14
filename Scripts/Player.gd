@@ -3,7 +3,6 @@ extends KinematicBody2D
 var up = Vector2.UP
 var move = Vector2.ZERO
 var move_speed = 520
-var gravity = 1000
 var jump_force = -400
 var is_grounded
 
@@ -25,11 +24,18 @@ func _ready():
 	emit_signal("change_life", max_health)
 
 func _physics_process(delta):
-	move.y += gravity * delta
+	move.y += Global.gravity * delta
 	move.x = 0
 	
 	if !hurted:
 		_get_input()
+		
+	if $raycasts/pushRight.is_colliding():
+		var object = $raycasts/pushRight.get_collider();
+		object.move_and_slide(Vector2(30,0) * move_speed * delta)
+	elif $raycasts/pushLeft.is_colliding():
+		var object = $raycasts/pushLeft.get_collider();
+		object.move_and_slide(Vector2(-30,0) * move_speed * delta)
 		
 	move = move_and_slide(move, up)
 	is_grounded = _check_is_grounded()
@@ -55,6 +61,9 @@ func _get_input():
 		if(move_dir !=0):
 			$sprite.flip_h = move_dir == -1
 			knock_dir = move_dir
+		
+		$raycasts/pushRight.set_enabled(move.x > 0)
+		$raycasts/pushLeft.set_enabled(move.x < 0)
 	
 func _input(e: InputEvent):
 	if e.is_action_pressed("jump") and is_grounded:
