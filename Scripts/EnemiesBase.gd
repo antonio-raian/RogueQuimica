@@ -22,7 +22,8 @@ func _physics_process(delta):
 	
 	if(anim.assigned_animation == "run"):
 		move.x = speed * move_direction
-		move = move_and_slide(move)
+		
+	move = move_and_slide(move)
 	
 	$sprite.flip_h = move_direction == 1
 
