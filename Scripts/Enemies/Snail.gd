@@ -30,8 +30,6 @@ func _on_animation_animation_finished(anim_name):
 		$raycasts/ray_ground_1.position.x *= -1
 		move_direction *= -1
 		$animation.play("run")
-	if anim_name == "shell_idle":
-		shelled = false
 
 func _on_Hitbox_body_entered(body):
 	hited = true
@@ -39,3 +37,7 @@ func _on_Hitbox_body_entered(body):
 	body.move.y = -300
 	yield(get_tree().create_timer(.2), "timeout")
 	hited = false
+	
+	shelled = true
+	yield(get_tree().create_timer(5), "timeout")
+	shelled = false

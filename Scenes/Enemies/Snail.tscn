@@ -7,12 +7,11 @@
 [ext_resource path="res://Scenes/Enemies/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Enemies/Snail/Shell Idle (38x24).png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 7.99997
 height = 20.0001
 
-[sub_resource type="Animation" id=1]
-resource_name = "hit"
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -60,11 +59,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 4 ) ]
+"values": [ SubResource( 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -112,10 +110,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 4 ) ]
+"values": [ SubResource( 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -163,16 +161,16 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 4 ) ]
+"values": [ SubResource( 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 7.99999
 height = 6.00001
 
-[sub_resource type="Animation" id=5]
-resource_name = "shell_idle"
-length = 4.7
+[sub_resource type="Animation" id=6]
+length = 1.2
+loop = true
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -208,7 +206,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 6 ) ]
+"values": [ SubResource( 5 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Hitbox:position")
@@ -229,10 +227,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [node name="Snail" type="KinematicBody2D"]
@@ -244,19 +242,18 @@ script = ExtResource( 4 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 6 )
 hframes = 6
-frame = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "run"
-anims/hit = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/run = SubResource( 3 )
-anims/shell_idle = SubResource( 5 )
+anims/hit = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+anims/shell_idle = SubResource( 6 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -8 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2, -17 )
