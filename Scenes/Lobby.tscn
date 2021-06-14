@@ -1,24 +1,12 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Scenes/Enemies/Mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Itens/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Itens/GreenPotion.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Itens/BluePotion.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Itens/PurplePotion.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Itens/RedPotion.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Itens/YellowPotion.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Prefabs/FallingPlattform.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Prefabs/MovinfPlatform.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Itens/SmallDiamond.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Itens/BigDiamond.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Enemies/BlueBird.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Enemies/Bat.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/Enemies/Ghost.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -642,55 +630,8 @@ position = Vector2( 491, 243 )
 [node name="FallingPlattform4" parent="platforms" instance=ExtResource( 11 )]
 position = Vector2( 549, 289 )
 
-[node name="MovinfPlatform" parent="platforms" instance=ExtResource( 12 )]
-position = Vector2( 100, 147 )
-horizontal = false
-
-[node name="MovinfPlatform2" parent="platforms" instance=ExtResource( 12 )]
-position = Vector2( 161, 157 )
-
-[node name="portions" type="Node2D" parent="."]
-
-[node name="GreenPotion" parent="portions" instance=ExtResource( 6 )]
-position = Vector2( 262, 164 )
-
-[node name="BluePotion" parent="portions" instance=ExtResource( 7 )]
-position = Vector2( 233, 164 )
-
-[node name="RedPotion" parent="portions" instance=ExtResource( 9 )]
-position = Vector2( 290, 165 )
-
-[node name="YellowPotion" parent="portions" instance=ExtResource( 10 )]
-position = Vector2( 317, 165 )
-
-[node name="PurplePotion" parent="portions" instance=ExtResource( 8 )]
-position = Vector2( 344, 165 )
-
-[node name="enemies" type="Node2D" parent="."]
-
-[node name="Mushroom" parent="enemies" instance=ExtResource( 1 )]
-position = Vector2( 278, 194 )
-
-[node name="Ghost" parent="enemies" instance=ExtResource( 19 )]
-position = Vector2( 422, 185 )
-
-[node name="BlueBird" parent="enemies" instance=ExtResource( 17 )]
-position = Vector2( 407, 108 )
-
-[node name="BlueBird2" parent="enemies" instance=ExtResource( 18 )]
-position = Vector2( 477, 32 )
-
-[node name="diamounds" type="Node2D" parent="."]
-
-[node name="SmallDiamond" parent="diamounds" instance=ExtResource( 14 )]
-position = Vector2( 204, 167 )
-
-[node name="BigDiamond" parent="diamounds" instance=ExtResource( 15 )]
-position = Vector2( 173, 167 )
-quantity = 5
-
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 158, 153 )
+position = Vector2( 42, 187 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
