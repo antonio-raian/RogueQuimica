@@ -112,4 +112,4 @@ func _on_hurtbox_body_entered(body):
 	hurted = false
 	
 	if health < 1:
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://Scenes/GameOver.tscn")
