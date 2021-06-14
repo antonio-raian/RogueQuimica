@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Enemies/BlueBird.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Enemies/Bat.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Enemies/Ghost.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -668,7 +669,16 @@ position = Vector2( 344, 165 )
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="Mushroom" parent="enemies" instance=ExtResource( 1 )]
-position = Vector2( 352, 193 )
+position = Vector2( 278, 194 )
+
+[node name="Ghost" parent="enemies" instance=ExtResource( 19 )]
+position = Vector2( 422, 185 )
+
+[node name="BlueBird" parent="enemies" instance=ExtResource( 17 )]
+position = Vector2( 407, 108 )
+
+[node name="BlueBird2" parent="enemies" instance=ExtResource( 18 )]
+position = Vector2( 477, 32 )
 
 [node name="diamounds" type="Node2D" parent="."]
 
@@ -680,13 +690,7 @@ position = Vector2( 173, 167 )
 quantity = 5
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 470, 318 )
+position = Vector2( 158, 153 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
-
-[node name="BlueBird" parent="." instance=ExtResource( 17 )]
-position = Vector2( 407, 108 )
-
-[node name="BlueBird2" parent="." instance=ExtResource( 18 )]
-position = Vector2( 477, 32 )
