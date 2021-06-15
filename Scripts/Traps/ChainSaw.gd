@@ -12,7 +12,13 @@ export var distance = 100
 #var follow = Vector2.ZERO
 
 func _ready():
-	$chain.rect_size.x = distance + 6.5
+	if horizontal:
+		$chain.rect_size.x = distance + 6.5
+	else:
+		$chain.rect_size.x = 8
+		$chain.rect_size.y = distance + 6.5
+		$chain.rect_position.y = (distance + 2.5) * -1 
+		
 	start_tween()
 	pass
 
