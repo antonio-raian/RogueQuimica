@@ -1,55 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Traps/Trampoline/Idle.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Traps/Trampoline/Jump (28x28).png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Traps/Trampoline.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Traps/Fan/Off.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Traps/Fan/On (24x8).png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Traps/Fan.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17, 9 )
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 1.0
+color = Color( 0.607843, 0.666667, 0.984314, 1 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "active"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 2 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 8 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
-}
-
-[sub_resource type="Animation" id=3]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
@@ -87,23 +58,72 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[node name="Trampoline" type="Area2D"]
+[sub_resource type="Animation" id=3]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 90 )
+
+[node name="Fan" type="Area2D"]
 collision_layer = 16
-collision_mask = 9
 script = ExtResource( 3 )
 
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -9 )
-shape = SubResource( 1 )
+[node name="wing" type="Particles2D" parent="."]
+position = Vector2( 1, -24 )
+amount = 50
+visibility_rect = Rect2( -50, -200, 100, 200 )
+draw_order = 1
+process_material = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 1, -21 )
+position = Vector2( 1, -6 )
 scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
+hframes = 4
 
 [node name="animation" type="AnimationPlayer" parent="."]
-anims/active = SubResource( 2 )
-anims/idle = SubResource( 3 )
+anims/off = SubResource( 2 )
+anims/on = SubResource( 3 )
 
-[connection signal="body_entered" from="." to="." method="_on_Trampoline_body_entered"]
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2( 2, -90 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_Fan_body_entered"]

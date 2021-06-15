@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Traps/FireFlame.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Traps/Fire/Hit (16x32).png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=6]
 resource_name = "hit"
 length = 0.4
 tracks/0/type = "value"
@@ -45,7 +45,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=7]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -148,8 +148,8 @@ frame = 2
 
 [node name="anim" type="AnimationPlayer" parent="fire"]
 autoplay = "off"
-anims/hit = SubResource( 1 )
-anims/off = SubResource( 2 )
+anims/hit = SubResource( 6 )
+anims/off = SubResource( 7 )
 anims/on = SubResource( 3 )
 
 [node name="collision" type="CollisionShape2D" parent="fire"]

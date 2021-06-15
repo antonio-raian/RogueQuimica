@@ -1,6 +1,6 @@
 extends Label
 
-func _process(delta):
+func _process(_delta):
 	text = "000" + str(Global.coins)
 	if Global.coins >=10:
 		text = "00" + str(Global.coins)
