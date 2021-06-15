@@ -2,23 +2,31 @@ extends Area2D
 
 onready var changer_in = get_parent().get_node("TransitionIn")
 
-export var path = String()
+export(String) var path
+export var enter = true
 
 func _ready():
 	pass
+	
+func _input(event):
+	if enter:
+		if event.is_action_pressed("interation"):
+			if !path:
+				print("No Room in this door")
+				return
+			if get_overlapping_bodies().size() > 0:
+				get_overlapping_bodies()[0].enter_door()
+				next_room()
+
+func next_room():
+	changer_in.change_scene(path)
 
 
 func _on_Door_body_entered(body):
-	print(body.name)
-	if body.name == "Player":
+	if enter:
 		$animation.play("opening")
 
 
 func _on_Door_body_exited(body):
-	if body.name == "Player":
+	if enter:
 		$animation.play("closing")
-
-
-func _on_animation_animation_finished(anim_name):
-	if anim_name == "opening":
-		changer_in.change_scene(path)

@@ -1,10 +1,19 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=37 format=2]
 
+[ext_resource path="res://Scenes/NPC/NPCStore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Itens/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=5]
+[ext_resource path="res://Assets/Itens/Potions/Purple potions/poção roxa meio vazia.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Itens/08-Box/Idle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Itens/Potions/Yellow potions/poção amarela meio vazia.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Itens/Potions/Blue potions/poção azul bem vazia.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Itens/Potions/Green potions/poção verde.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Itens/Potions/Red potions/poção vermelha.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Itens/Potions/Red potions/empty.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Itens/Potion.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -592,6 +601,373 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 5/shapes = [  ]
 5/z_index = 0
 
+[sub_resource type="Animation" id=15]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
 [node name="Lobby" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource( 13 )]
@@ -615,10 +991,129 @@ tile_data = PoolIntArray( 0, 0, 0, 19, 0, 0, 65536, 1, 0, 65555, 1, 0, 131072, 1
 position = Vector2( 602, 292 )
 path = "res://Scenes/Rooms/1.tscn"
 
-[node name="platforms" type="Node2D" parent="."]
+[node name="NPCStore" parent="." instance=ExtResource( 1 )]
+position = Vector2( 146, 190 )
+scale = Vector2( 0.7, 0.7 )
+collision_layer = 256
+
+[node name="store" type="Node2D" parent="."]
+
+[node name="Idle3" type="Sprite" parent="store"]
+position = Vector2( 106, 180 )
+scale = Vector2( 1.36364, 1.625 )
+texture = ExtResource( 7 )
+
+[node name="Idle5" type="Sprite" parent="store"]
+position = Vector2( 71, 180 )
+scale = Vector2( 1.36364, 1.625 )
+texture = ExtResource( 7 )
+
+[node name="Idle6" type="Sprite" parent="store"]
+position = Vector2( 88, 157.5 )
+scale = Vector2( 1.27273, 1.1875 )
+texture = ExtResource( 7 )
+
+[node name="Idle" type="Sprite" parent="store"]
+position = Vector2( 133, 180 )
+scale = Vector2( 1.36364, 1.625 )
+texture = ExtResource( 7 )
+
+[node name="Idle2" type="Sprite" parent="store"]
+position = Vector2( 165, 180 )
+scale = Vector2( 1.36364, 1.625 )
+texture = ExtResource( 7 )
+
+[node name="Idle4" type="Sprite" parent="store"]
+position = Vector2( 190, 180 )
+scale = Vector2( 1.36364, 1.625 )
+texture = ExtResource( 7 )
+
+[node name="portion" type="Sprite" parent="store"]
+position = Vector2( 89, 139 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 6 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion"]
+autoplay = "idle"
+anims/idle = SubResource( 15 )
+
+[node name="portion7" type="Sprite" parent="store"]
+position = Vector2( 110, 158 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 11 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion7"]
+autoplay = "idle"
+anims/idle = SubResource( 16 )
+
+[node name="portion3" type="Sprite" parent="store"]
+position = Vector2( 66, 157 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 9 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion3"]
+autoplay = "idle"
+anims/idle = SubResource( 17 )
+
+[node name="portion4" type="Sprite" parent="store"]
+position = Vector2( 174, 158 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 8 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion4"]
+autoplay = "idle"
+anims/idle = SubResource( 18 )
+
+[node name="portion5" type="Sprite" parent="store"]
+position = Vector2( 195, 158 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 10 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion5"]
+autoplay = "idle"
+anims/idle = SubResource( 19 )
+
+[node name="portion6" type="Sprite" parent="store"]
+position = Vector2( 220, 187 )
+rotation = 1.5708
+scale = Vector2( 0.937502, 1.0625 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion6"]
+autoplay = "idle"
+anims/idle = SubResource( 20 )
+
+[node name="portion2" type="Sprite" parent="store"]
+position = Vector2( 212, 183 )
+scale = Vector2( 1.125, 1.25 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="store/portion2"]
+autoplay = "idle"
+anims/idle = SubResource( 21 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 20, 181 )
+position = Vector2( 421, 191 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
+
+[node name="BluePotion" parent="." instance=ExtResource( 14 )]
+position = Vector2( 297, 159 )
+
+[connection signal="body_entered" from="NPCStore" to="NPCStore" method="_on_NPCStore_body_entered"]

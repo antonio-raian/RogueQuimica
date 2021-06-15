@@ -13,8 +13,12 @@ var knock_dir = 1
 var knock_force = 2000
 
 var kick = false
+var entering = false
+var exiting = false
 
+onready var anim = $animation
 onready var raycasts = $raycasts
+onready var invent_pl = preload("res://Scenes/Prefabs/Invetory.tscn")
 
 signal change_life(health);
 
@@ -52,6 +56,10 @@ func _physics_process(delta):
 #	Methods
 func _get_input():
 	kick = false
+	if Input.is_action_just_pressed("inventory"):
+		var invet = invent_pl.instance()
+		get_tree().paused = true
+		get_parent().get_node('HUD').add_child(invet)
 	if Input.is_action_pressed("kick"):
 		kick = true
 	else:
@@ -77,24 +85,30 @@ func _check_is_grounded():
 	return false
 
 func _set_animation():
-	var anim = "idle"
+	var actual_anim = "idle"
 	
 	if !is_grounded:
-		anim = "jump"
+		actual_anim = "jump"
 	elif move.x !=0:
-		anim = "run"
+		actual_anim = "run"
 		
 	if move.y > 0 and !is_grounded:
-		anim = "falling"
+		actual_anim = "falling"
 	
 	if hurted:
-		anim = "hurt"
+		actual_anim = "hurt"
 		
 	if kick:
-		anim = "kick"
+		actual_anim = "kick"
 	
-	if $animation.assigned_animation!=anim:
-		$animation.play(anim)
+	if entering:
+		actual_anim = "in"
+	
+	if exiting:
+		actual_anim = "out"
+	
+	if anim.assigned_animation != actual_anim:
+		anim.play(actual_anim)
 
 func knocback():
 	move.x = - knock_dir * knock_force
@@ -103,7 +117,6 @@ func knocback():
 func _on_hurtbox_body_entered(_body):
 	player_damage()
 	
-
 func game_over():	
 	if player_health < 1:
 		if get_tree().change_scene("res://Scenes/GameOver.tscn") != OK:
@@ -122,3 +135,13 @@ func player_damage():
 	hurted = false
 	
 	game_over()
+
+func enter_door():
+	entering = true
+	yield(get_tree().create_timer(1), "timeout")
+	entering = false
+	
+func exit_door():
+	exiting = true
+	yield(get_tree().create_timer(1), "timeout")
+	exiting = false
