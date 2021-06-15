@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
+[ext_resource path="res://Scenes/Traps/ChainSaw.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Itens/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Enemies/Mushroom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Traps/Fire.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
 
@@ -618,11 +619,15 @@ path = "res://Scenes/Rooms/1.tscn"
 
 [node name="platforms" type="Node2D" parent="."]
 
+[node name="ChainSaw" parent="." instance=ExtResource( 1 )]
+position = Vector2( 272, 144 )
+distance = 10
+
+[node name="Fire" parent="ChainSaw" instance=ExtResource( 6 )]
+position = Vector2( -111, 47 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 20, 181 )
 collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
-
-[node name="Mushroom" parent="." instance=ExtResource( 6 )]
-position = Vector2( 386, 178 )

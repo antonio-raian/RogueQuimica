@@ -101,6 +101,14 @@ func knocback():
 	move = move_and_slide(move)
 
 func _on_hurtbox_body_entered(body):
+	player_damage()
+	
+
+func game_over():	
+	if player_health < 1:
+		get_tree().change_scene("res://Scenes/GameOver.tscn")
+
+func player_damage():
 	hurted = true;
 	player_health -= 1
 	
@@ -111,6 +119,3 @@ func _on_hurtbox_body_entered(body):
 	yield(get_tree().create_timer(0.5), "timeout")
 	$hurtbox/collision.set_deferred("disabled", false)	
 	hurted = false
-	
-	if player_health < 1:
-		get_tree().change_scene("res://Scenes/GameOver.tscn")
