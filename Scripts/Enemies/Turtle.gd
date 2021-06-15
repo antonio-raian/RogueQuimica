@@ -1,8 +1,13 @@
-extends EnemyBase
+extends Area2D
+
+var hited = false
 
 var spiked = false
 var spikes_out = false
 var spikes_in = false
+
+func _process(delta):
+	set_animation()
 
 func set_animation():
 	var anim = "idle_1" 
@@ -38,4 +43,8 @@ func _on_Hitbox_body_entered(body):
 	hited = false
 	spikes_out = true
 	
-	
+
+func _on_Turtle_body_entered(body):
+	if spiked or !hited:
+		if body.has_method("player_damage"):
+			body.player_damage()
