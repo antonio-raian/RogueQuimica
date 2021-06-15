@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/TileSet/14-TileSets/Terrain (32x32).png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -839,6 +839,8 @@ extents = Vector2( 104, 5 )
 
 [node name="Room1" type="Node2D"]
 
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 15 )
 cell_size = Vector2( 32, 32 )
@@ -852,9 +854,6 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 8
 format = 1
 tile_data = PoolIntArray( 65535, 0, 0, 21, 0, 0, 131071, 2, 0, 65539, 8, 0, 65546, 9, 0, 65553, 8, 0, 65557, 1, 0, 131093, 3, 0, 262150, 4, 0, 262151, 5, 0, 262152, 6, 0, 393222, 4, 0, 393223, 5, 0, 393224, 6, 0, 524287, 0, 0, 458755, 9, 0, 589823, 2, 0, 655365, 5, 0, 655366, 5, 0, 655367, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 14, 301 )
 
 [node name="limit" type="StaticBody2D" parent="."]
 position = Vector2( -35, 272 )

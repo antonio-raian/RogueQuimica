@@ -6,8 +6,7 @@ var move_speed = 520
 var jump_force = -400
 var is_grounded
 
-var health = 3
-var max_health = 3
+var player_health = 3
 
 var hurted = false
 var knock_dir = 1
@@ -20,8 +19,10 @@ onready var raycasts = $raycasts
 signal change_life(health);
 
 func _ready():
+	player_health = Global.lifes
+	
 	connect("change_life", get_parent().get_node("HUD/HBoxContainer/lifes"), "on_change_life")
-	emit_signal("change_life", max_health)
+	emit_signal("change_life", player_health)
 
 func _physics_process(delta):
 	move.y += Global.gravity * delta
@@ -101,9 +102,9 @@ func knocback():
 
 func _on_hurtbox_body_entered(body):
 	hurted = true;
-	health -= 1
+	player_health -= 1
 	
-	emit_signal("change_life", health)
+	emit_signal("change_life", player_health)
 	
 	knocback()
 	$hurtbox/collision.set_deferred("disabled", true)
@@ -111,5 +112,5 @@ func _on_hurtbox_body_entered(body):
 	$hurtbox/collision.set_deferred("disabled", false)	
 	hurted = false
 	
-	if health < 1:
+	if player_health < 1:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
