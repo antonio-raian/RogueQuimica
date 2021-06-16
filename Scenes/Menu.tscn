@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Background1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileSet/14-TileSets/Decorations (32x32).png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/Itens/Potions/Red potions/poção vermelha.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Fonts/GOODDP__.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Prefabs/TransitionOut.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Terrain (32x32).png 0"
@@ -1052,6 +1054,10 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 65541, 0, 0, 65542, 31, 0, 65543, 28, 0, 65544, 28, 0, 65545, 28, 0, 65546, 28, 0, 65547, 28, 0, 65548, 28, 0, 65549, 32, 0, 65550, 2, 0, 131077, 3, 0, 131078, 5, 0, 131079, 39, 0, 131080, 39, 0, 131081, 39, 0, 131082, 39, 0, 131083, 39, 0, 131084, 39, 0, 131085, 3, 0, 131086, 5, 0, 196613, 3, 0, 196614, 5, 0, 196615, 39, 0, 196616, 39, 0, 196617, 39, 0, 196618, 39, 0, 196619, 39, 0, 196620, 39, 0, 196621, 3, 0, 196622, 5, 0, 262149, 3, 0, 262150, 5, 0, 262151, 39, 0, 262152, 39, 0, 262153, 39, 0, 262154, 39, 0, 262155, 39, 0, 262156, 39, 0, 262157, 3, 0, 262158, 5, 0, 327685, 3, 0, 327686, 5, 0, 327687, 39, 0, 327688, 39, 0, 327689, 39, 0, 327690, 39, 0, 327691, 39, 0, 327692, 39, 0, 327693, 3, 0, 327694, 5, 0, 393221, 3, 0, 393222, 5, 0, 393223, 39, 0, 393224, 39, 0, 393225, 39, 0, 393226, 39, 0, 393227, 39, 0, 393228, 39, 0, 393229, 3, 0, 393230, 5, 0, 458757, 3, 0, 458758, 5, 0, 458759, 39, 0, 458760, 39, 0, 458761, 39, 0, 458762, 39, 0, 458763, 39, 0, 458764, 39, 0, 458765, 3, 0, 458766, 5, 0, 524293, 6, 0, 524294, 33, 0, 524295, 28, 0, 524296, 28, 0, 524297, 28, 0, 524298, 28, 0, 524299, 28, 0, 524300, 28, 0, 524301, 34, 0, 524302, 8, 0 )
+
+[node name="TransitionOut" parent="." instance=ExtResource( 9 )]
+
+[node name="TransitionIn" parent="." instance=ExtResource( 8 )]
 
 [node name="title" type="Label" parent="."]
 margin_left = 224.0

@@ -19,17 +19,20 @@ var exiting = false
 onready var anim = $animation
 onready var raycasts = $raycasts
 onready var invent_pl = preload("res://Scenes/Prefabs/Invetory.tscn")
+onready var periodic_pl = preload("res://Scenes/Prefabs/PeriodicTable.tscn")
+onready var pause_pl = preload("res://Scenes/Prefabs/PauseScreen.tscn")
 
 signal change_life(health);
 
 func _ready():
+	Global.player = self
 	player_health = Global.lifes
 	
 	connect("change_life", get_parent().get_node("HUD/HBoxContainer/lifes"), "on_change_life")
 	emit_signal("change_life", player_health)
 
 func _physics_process(delta):
-	move.y += Global.gravity * delta
+	move.y += Global.GRAVITY * delta
 	move.x = 0
 	
 	if !hurted:
@@ -41,8 +44,9 @@ func _physics_process(delta):
 	elif $raycasts/pushLeft.is_colliding():
 		var object = $raycasts/pushLeft.get_collider();
 		object.move_and_slide(Vector2(-30,0) * move_speed * delta)
-		
+	
 	move = move_and_slide(move, up)
+	
 	is_grounded = _check_is_grounded()
 	
 	_set_animation()
@@ -56,17 +60,26 @@ func _physics_process(delta):
 #	Methods
 func _get_input():
 	kick = false
+	
+	if Input.is_action_just_pressed("pause_game"):
+		var pause = pause_pl.instance()
+		get_tree().paused = true
+		get_parent().get_node('HUD').add_child(pause)
 	if Input.is_action_just_pressed("inventory"):
 		var invet = invent_pl.instance()
 		get_tree().paused = true
 		get_parent().get_node('HUD').add_child(invet)
+	if Input.is_action_just_pressed("table_view"):
+		var table = periodic_pl.instance()
+		get_tree().paused = true
+		get_parent().get_node('HUD').add_child(table)
 	if Input.is_action_pressed("kick"):
 		kick = true
 	else:
-		move.x = 0
+		move.x = int(0)
 		var move_dir = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-		move.x = lerp(move.x, move_speed * move_dir, 0.2)
-
+		move.x = lerp(move.x, move_speed * move_dir, .2)
+		
 		if(move_dir !=0):
 			$sprite.flip_h = move_dir == -1
 			knock_dir = move_dir

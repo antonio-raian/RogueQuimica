@@ -6,6 +6,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	move.y += Global.gravity * delta
+	move.y += Global.GRAVITY * delta
 	
 	move = move_and_slide(move)

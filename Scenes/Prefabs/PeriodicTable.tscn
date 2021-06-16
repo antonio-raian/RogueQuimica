@@ -1,35 +1,30 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI/UI_btn_close.png" type="Texture" id=1]
-[ext_resource path="res://Assets/UI/UI_button.png" type="Texture" id=2]
-[ext_resource path="res://Assets/UI/UI_button3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Itens/Potions/Empty.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/UI_square1.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/Choko.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/Prefabs/Store.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/Prefabs/GridStore.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Fonts/Choko.ttf" type="DynamicFontData" id=9]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 21
 outline_size = 1
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 12
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 9
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 3
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../sprite:hframes")
+tracks/0/path = NodePath("sprite:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,7 +36,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../sprite:vframes")
+tracks/1/path = NodePath("sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -53,7 +48,7 @@ tracks/1/keys = {
 "values": [ 3 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../sprite:frame")
+tracks/2/path = NodePath("sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -65,21 +60,23 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
+size = 11
 font_data = ExtResource( 9 )
 
-[node name="Store" type="Popup"]
+[node name="PeriodicTable" type="Popup"]
 pause_mode = 2
+visible = true
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="molder" type="TextureRect" parent="."]
-margin_left = 174.0
-margin_top = 51.0
-margin_right = 472.0
-margin_bottom = 249.0
+margin_left = 66.0
+margin_top = 20.0
+margin_right = 589.0
+margin_bottom = 286.0
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -87,13 +84,13 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="."]
-margin_left = 204.0
-margin_top = 64.0
-margin_right = 451.0
-margin_bottom = 86.0
-custom_fonts/font = SubResource( 2 )
+margin_left = 102.0
+margin_top = 43.0
+margin_right = 559.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Loja"
+text = "Tabela Periódica"
 align = 1
 valign = 1
 __meta__ = {
@@ -101,45 +98,21 @@ __meta__ = {
 }
 
 [node name="grid" type="GridContainer" parent="."]
-margin_left = 312.0
-margin_top = 95.0
-margin_right = 447.0
-margin_bottom = 212.0
-columns = 3
+margin_left = 271.0
+margin_top = 81.0
+margin_right = 555.0
+margin_bottom = 255.0
+columns = 8
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_buy" type="TextureButton" parent="."]
-margin_left = 210.0
-margin_top = 187.0
-margin_right = 301.0
-margin_bottom = 216.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="btn_buy"]
-margin_right = 91.0
-margin_bottom = 27.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Comprar"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="btn_close" type="TextureButton" parent="."]
-margin_left = 442.0
-margin_top = 58.0
-margin_right = 466.0
-margin_bottom = 78.0
+margin_left = 548.0
+margin_top = 35.0
+margin_right = 572.0
+margin_bottom = 55.0
 texture_normal = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -147,8 +120,9 @@ __meta__ = {
 }
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 252, 112 )
+position = Vector2( 186, 88 )
 scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 2 )
 hframes = 3
 vframes = 3
 
@@ -157,7 +131,40 @@ margin_left = -9.0
 margin_top = -2.0
 margin_right = 9.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+
+[node name="name" type="Label" parent="."]
+margin_left = 159.0
+margin_top = 118.0
+margin_right = 220.0
+margin_bottom = 134.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Nome"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="details" type="Label" parent="."]
+margin_left = 108.0
+margin_top = 145.0
+margin_right = 272.0
+margin_bottom = 262.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Detalhes"
 align = 1
 valign = 1
 autowrap = true
@@ -165,35 +172,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="animation" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/idle = SubResource( 7 )
-
-[node name="name" type="Label" parent="."]
-margin_left = 222.0
-margin_top = 143.0
-margin_right = 283.0
-margin_bottom = 159.0
-grow_horizontal = 2
-custom_fonts/font = SubResource( 5 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="value" type="Label" parent="."]
-margin_left = 244.0
-margin_top = 160.0
-margin_right = 259.0
-margin_bottom = 176.0
-grow_horizontal = 2
-custom_fonts/font = SubResource( 5 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="btn_buy" to="." method="_on_btn_buy_pressed"]
 [connection signal="pressed" from="btn_close" to="." method="_on_btn_close_pressed"]

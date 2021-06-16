@@ -2,12 +2,14 @@ extends Panel
 
 onready var sprite = $sprite
 var item = {}
-#func _ready():
-#	sprite.texture = load("res://Assets/Itens/bag.png")
+
+func _ready():
+	print(get_parent().get_parent().name)
 
 func set_item(param):
 	item = param
-	sprite.texture = load(param.scene)
+	if get_parent().get_parent().name != "PeriodicTable" or param.active:
+		sprite.texture = load(param.scene)
 	$sprite/label.text = param.sigla
 	
 

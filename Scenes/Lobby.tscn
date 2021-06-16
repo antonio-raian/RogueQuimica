@@ -13,7 +13,7 @@
 [ext_resource path="res://Assets/Itens/Potions/Red potions/poção vermelha.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Itens/Potions/Red potions/empty.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Itens/Potion.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Prefabs/TransitionOut.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Prefabs/TransitionIn.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -992,9 +992,8 @@ position = Vector2( 602, 292 )
 path = "res://Scenes/Rooms/1.tscn"
 
 [node name="NPCStore" parent="." instance=ExtResource( 1 )]
-position = Vector2( 146, 190 )
+position = Vector2( 199, 190 )
 scale = Vector2( 0.7, 0.7 )
-collision_layer = 256
 
 [node name="store" type="Node2D" parent="."]
 
@@ -1113,7 +1112,4 @@ collision_mask = 14
 
 [node name="TransitionIn" parent="." instance=ExtResource( 16 )]
 
-[node name="BluePotion" parent="." instance=ExtResource( 14 )]
-position = Vector2( 297, 159 )
-
-[connection signal="body_entered" from="NPCStore" to="NPCStore" method="_on_NPCStore_body_entered"]
+[node name="TransitionOut" parent="." instance=ExtResource( 14 )]

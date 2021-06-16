@@ -163,11 +163,5 @@ enabled = true
 cast_to = Vector2( -16, 0 )
 collision_mask = 8
 
-[node name="ray_ground_1" type="RayCast2D" parent="raycasts"]
-position = Vector2( -12, -7 )
-enabled = true
-cast_to = Vector2( 0, 12 )
-collision_mask = 8
-
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

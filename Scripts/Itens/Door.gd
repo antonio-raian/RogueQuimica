@@ -10,11 +10,11 @@ func _ready():
 	
 func _input(event):
 	if enter:
-		if event.is_action_pressed("interation"):
+		if event.is_action_pressed("interation") and get_overlapping_bodies().size() > 0:
 			if !path:
 				print("No Room in this door")
 				return
-			if get_overlapping_bodies().size() > 0:
+			else:
 				get_overlapping_bodies()[0].enter_door()
 				next_room()
 

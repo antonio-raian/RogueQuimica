@@ -38,7 +38,7 @@ func _on_animation_animation_finished(anim_name):
 
 func _on_Hitbox_body_entered(body):
 	hited = true
-	body.move.y = -300
+	body.move.y = -600
 	yield(get_tree().create_timer(.2), "timeout")
 	hited = false
 	spikes_out = true

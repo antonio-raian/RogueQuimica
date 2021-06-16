@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var changer_in = $TransitionIn
 var opcao = 0
 
 func _ready():
@@ -21,6 +22,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		match opcao:
 			0: 
-				get_tree().change_scene("res://Scenes/Lobby.tscn")
+				changer_in.change_scene("res://Scenes/Lobby.tscn")
 			1: 
 				get_tree().quit()

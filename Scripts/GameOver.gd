@@ -5,5 +5,7 @@ func _ready():
 
 
 func _on_BtnRetry_pressed():
-	Global.lifes = 3
+	var coins = Global.coins
+	Global.clean_globals()
+	Global.coins = coins - 10 if coins - 10 >=0 else 0
 	get_tree().change_scene("res://Scenes/Lobby.tscn")

@@ -6,7 +6,7 @@ func _physics_process(delta):
 func set_animation():
 	var anim = "run"
 	
-	if $raycasts/ray_wall.is_colliding():
+	if $raycasts/ray_wall.is_colliding() or !$raycasts/ray_ground_1.is_colliding():
 		move.x = 0
 		anim = "idle"
 		
@@ -20,5 +20,6 @@ func _on_animation_animation_finished(anim_name):
 	if (anim_name == "idle"):
 		$sprite.flip_h = !$sprite.flip_h
 		$raycasts/ray_wall.scale.x *= -1
+		$raycasts/ray_ground_1.position.x *= -1
 		move_direction *= -1
 		$animation.play("run")

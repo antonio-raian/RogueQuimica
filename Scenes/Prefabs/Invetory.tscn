@@ -25,11 +25,11 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 3
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:hframes")
+tracks/0/path = NodePath("../sprite:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:vframes")
+tracks/1/path = NodePath("../sprite:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -53,7 +53,7 @@ tracks/1/keys = {
 "values": [ 3 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("../sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -64,12 +64,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.5, 2.5 ) ]
+}
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 9 )
 
 [node name="Invetory" type="Popup"]
 pause_mode = 2
+visible = true
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -178,18 +191,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="box_details" type="Node2D" parent="."]
+[node name="sprite" type="Sprite" parent="."]
 position = Vector2( 220, 101 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="sprite" type="Sprite" parent="box_details"]
 scale = Vector2( 2.5, 2.5 )
 hframes = 3
 vframes = 3
 
-[node name="label" type="Label" parent="box_details/sprite"]
+[node name="label" type="Label" parent="sprite"]
 margin_left = -9.0
 margin_top = -2.0
 margin_right = 9.0
@@ -202,34 +210,34 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="animation" type="AnimationPlayer" parent="box_details"]
+[node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 4 )
+anims/idle = SubResource( 6 )
 
-[node name="name" type="Label" parent="box_details"]
-margin_left = -30.0
-margin_top = 19.0
-margin_right = 30.0
-margin_bottom = 35.0
+[node name="name" type="Label" parent="."]
+margin_left = 190.0
+margin_top = 136.0
+margin_right = 250.0
+margin_bottom = 152.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
-[node name="quantity" type="Label" parent="box_details"]
-margin_left = -8.0
-margin_top = 29.0
-margin_right = 8.0
-margin_bottom = 45.0
+[node name="quantity" type="Label" parent="."]
+margin_left = 212.0
+margin_top = 155.0
+margin_right = 228.0
+margin_bottom = 171.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="btn_use" to="." method="_on_btn_use_pressed"]
