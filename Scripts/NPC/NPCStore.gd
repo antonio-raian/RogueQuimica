@@ -5,12 +5,10 @@ onready var store = preload("res://Scenes/Prefabs/Store.tscn")
 export var speed = 50
 var move = Vector2.ZERO
 var move_direction = -1
-var limit_x_r = 0
-var limit_x_l = 0
+var limit_x_r = 200
+var limit_x_l = 100
 
 func _ready():
-	limit_x_r = self.global_position.x
-	limit_x_l = limit_x_r - 300
 	pass
 	
 func _physics_process(delta):
@@ -19,7 +17,7 @@ func _physics_process(delta):
 	
 	move = move_and_slide(move)
 	
-	if int(self.global_position.x) >= int(limit_x_r) or int(self.global_position.x) <= int(limit_x_l):
+	if int(self.position.x) >= int(limit_x_r) or int(self.position.x) <= int(limit_x_l):
 		change_direction()
 		change_anim()
 		
@@ -27,7 +25,6 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("interation"):
 		if $detect.get_overlapping_bodies().size() > 0:
-			print("ENTROU NA LOJA")
 			get_tree().paused = true
 			var child = store.instance()
 			get_parent().get_node("HUD").add_child(child)
@@ -40,7 +37,6 @@ func change_direction():
 
 
 func _on_detect_body_entered(body):
-	print(body.name)
 	$animation.play("idle")
 	speed = 0
 

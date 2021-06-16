@@ -12,6 +12,7 @@ func _on_btn_return_pressed():
 func _on_btn_menu_pressed():
 	finish()
 	Global.clean_globals()
+	Global.clean_periodic_table()
 	changer_in.change_scene("res://Scenes/Menu.tscn")
 
 func _on_btn_exit_pressed():

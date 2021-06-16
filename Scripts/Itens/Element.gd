@@ -8,7 +8,7 @@ var item = null
 
 func _ready():
 	randomize()
-	item = Global.store[randi() % Global.store.size() - 1]
+	item = Global.periodic_table[randi() % Global.periodic_table.size() - 1]
 	sprite.texture = load(item.scene)
 	
 

@@ -35,9 +35,6 @@ var store = []
 func _ready():
 	randomize()
 	clean_globals()
-	for i in periodic_table:
-		store.append(i)
-		store[i.id]["value"] = 1
 	pass
 
 func buy_in_store(item):
@@ -105,3 +102,15 @@ func clean_globals():
 	coins = 0
 	lifes = MAX_HEALTH
 	inventory = []
+	store = []
+
+func clean_periodic_table():
+	for i in periodic_table:
+		i.active = false
+		
+func generate_store():
+	print("Gerando Loja")
+	for i in periodic_table:
+		if i.active:
+			store.append(i)
+			store[store.size()-1]["value"] = 1

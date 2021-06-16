@@ -1,4 +1,5 @@
 extends Popup
+class_name StoreClass
 
 const ItemClass = preload("res://Scripts/Prefabs/StoreItem.gd")
 onready var grid = $grid
